@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.MyContentActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:text="我的内容"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <!-- 显示类型选择器 -->
+    <RadioGroup
+        android:id="@+id/rg_my_content_display_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
+
+        <RadioButton
+            android:id="@+id/rb_my_articles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的文章"
+            android:checked="true"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:button="@null"
+            android:background="@drawable/radio_button_selector"
+            android:gravity="center"
+            android:textColor="@color/radio_button_text_color_selector"/>
+
+        <RadioButton
+            android:id="@+id/rb_my_photos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="我的照片"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:button="@null"
+            android:background="@drawable/radio_button_selector"
+            android:gravity="center"
+            android:textColor="@color/radio_button_text_color_selector"
+            android:layout_marginStart="16dp"/>
+    </RadioGroup>
+
+    <!-- 文章显示区域 -->
+    <LinearLayout
+        android:id="@+id/layout_my_article_display"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="visible"> <!-- 默认显示 -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_my_articles"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_article" />
+    </LinearLayout>
+
+    <!-- 图片显示区域 -->
+    <LinearLayout
+        android:id="@+id/layout_my_photo_display"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone"> <!-- 默认隐藏 -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_my_photos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            tools:listitem="@layout/item_photo" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/my_content_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:visibility="gone" />
+
+</LinearLayout>

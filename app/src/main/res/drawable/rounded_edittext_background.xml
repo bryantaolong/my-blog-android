@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景颜色为白色 -->
+    <solid android:color="@android:color/white"/>
+    <!-- 圆角半径为 8dp -->
+    <corners android:radius="8dp"/>
+    <!-- 边框宽度为 1dp，颜色为深灰色 -->
+    <stroke android:width="1dp" android:color="@android:color/darker_gray"/>
+</shape>

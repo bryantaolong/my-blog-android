@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.SearchActivity">
+
+    <!-- 顶部的搜索框 -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_search_background"
+        android:iconifiedByDefault="false"
+        android:queryHint="搜索..."
+        app:queryHint="搜索..." />
+
+    <!-- 搜索类型选择器 (文章、图片、用户) -->
+    <RadioGroup
+        android:id="@+id/rg_search_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <RadioButton
+            android:id="@+id/rb_search_articles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="文章"
+            android:checked="true"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:button="@null"
+            android:background="@drawable/radio_button_selector"
+            android:gravity="center"
+            android:textColor="@color/radio_button_text_color_selector"/>
+
+        <RadioButton
+            android:id="@+id/rb_search_photos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="图片"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:button="@null"
+            android:background="@drawable/radio_button_selector"
+            android:gravity="center"
+            android:textColor="@color/radio_button_text_color_selector"
+            android:layout_marginStart="8dp"/>
+
+        <RadioButton
+            android:id="@+id/rb_search_users"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="用户"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:button="@null"
+            android:background="@drawable/radio_button_selector"
+            android:gravity="center"
+            android:textColor="@color/radio_button_text_color_selector"
+            android:layout_marginStart="8dp"/>
+    </RadioGroup>
+
+    <!-- 搜索结果显示区域 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- 文章结果 -->
+        <LinearLayout
+            android:id="@+id/layout_article_results"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_article_results"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_article" />
+        </LinearLayout>
+
+        <!-- 图片结果 -->
+        <LinearLayout
+            android:id="@+id/layout_photo_results"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_photo_results"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/item_photo" />
+        </LinearLayout>
+
+        <!-- 用户结果 -->
+        <LinearLayout
+            android:id="@+id/layout_user_results"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_user_results"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_user" />
+        </LinearLayout>
+
+        <!-- 加载指示器 -->
+        <ProgressBar
+            android:id="@+id/search_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+</LinearLayout>
